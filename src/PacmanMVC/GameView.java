@@ -1,6 +1,7 @@
 package PacmanMVC;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
@@ -13,9 +14,10 @@ public class GameView extends JFrame {
 		_points=0;
 		boardPanel=new BoardPanel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 800);
-		setMinimumSize(new Dimension(800, 800));
-		setMaximumSize(new Dimension(800, 800));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(screenSize);
+		setMinimumSize(screenSize);
+		setMaximumSize(screenSize);
 		setVisible(false);
 	}
 		
