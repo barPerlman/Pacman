@@ -9,16 +9,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel{
-
-	ImageIcon resizedBlock;
-	public BoardPanel() {
-		resizedBlock=new ImageIcon("images/block25.png");
-	}
+	String lvl1BlockPath="images/block25.png";
+	ImageIcon blockImage;
+	//gameTools:
+		final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
+				PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
 	
-public void paint(Graphics g){
-		
-	////////////////////////////
-	int [][] boardLevel1={
+	//receivedBoard initialized to the level1 board
+	//the controller updates later the board appearance
+	int[][] receivedBoard={
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
 			{1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1},
@@ -52,15 +51,22 @@ public void paint(Graphics g){
 			{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 			};
+	
+	
+	public BoardPanel() {
+		blockImage=new ImageIcon(lvl1BlockPath);
 		
-	////////////////////////
-		//int [][] board1=this.board.getBoard();//get the init board
+	}
+	
+public void paint(Graphics g){
 		
-		for(int i=0;i<boardLevel1.length;i++){
-			for(int j=0;j<boardLevel1.length;j++){
-				if(boardLevel1[i][j]==1){
+
+		
+		for(int i=0;i<receivedBoard.length;i++){
+			for(int j=0;j<receivedBoard.length;j++){
+				if(receivedBoard[i][j]==BLOCK){
 					//g.fillRect(i*25, j*25, 25, 25);
-					resizedBlock.paintIcon(this, g, i*25, j*25);
+					blockImage.paintIcon(this, g, i*25, j*25);
 				}
 			}
 		}
