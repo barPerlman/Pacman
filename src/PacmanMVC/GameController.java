@@ -1,5 +1,6 @@
 package PacmanMVC;
 
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -25,11 +26,13 @@ public class GameController implements KeyListener {
 
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP){
-
+			_model.set2();
+			_view.reBoard();
+		
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN){
 		}
-System.out.println("hi");
+		System.out.println("hi");
 		
 	}
 

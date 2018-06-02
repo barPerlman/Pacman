@@ -14,4 +14,10 @@ public class GameModel {
 		
 		return _board.getBoard();
 	}
+	public void set2() {
+		_board.set2();
+		
 	}
+
+}
+

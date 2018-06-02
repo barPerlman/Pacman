@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import ViewComponents.*;
 public class GameView extends JFrame {
 	private BoardPanel boardPanel;
-	GameController C;
 	public GameView(){
 		super("Pacman");
 		boardPanel=new BoardPanel();
@@ -27,4 +26,8 @@ public class GameView extends JFrame {
 	public void setBoardListener(KeyListener k) {
 	this.boardPanel.addKeyListener(k);
 	}
+	public void reBoard() {
+		boardPanel.repaint();
+	}
+
 }

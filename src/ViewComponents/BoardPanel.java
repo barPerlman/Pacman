@@ -35,8 +35,9 @@ public class BoardPanel extends JPanel {
 		_appleImage = new ImageIcon("images/apple.png");
 		_strawberryImage = new ImageIcon("images/strawberry.png");
 		_emptyImage=new ImageIcon("images/empty.png");
-		_pacman=new ImageIcon("pacmanDown.png");
-		
+		_pacman=new ImageIcon("images/pacmanDown.png");
+		setFocusable(true);
+		setRequestFocusEnabled(true);
 		
 	}
 
@@ -69,7 +70,7 @@ public class BoardPanel extends JPanel {
 				else if(receivedBoard[i][j]==EMPTY){
 					_emptyImage.paintIcon(this, g2, i * 25, j * 25);
 				}
-				else if(receivedBoard[i][j]==2){
+				else if(receivedBoard[i][j]==PACMAN){
 					_pacman.paintIcon(this, g2, i * 25, j * 25);
 				}
 			}
@@ -81,6 +82,8 @@ public class BoardPanel extends JPanel {
 		this.receivedBoard = board;
 	}
 	
+	
+
 	
 
 }
