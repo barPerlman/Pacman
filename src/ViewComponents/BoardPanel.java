@@ -17,6 +17,7 @@ public class BoardPanel extends JPanel {
 	ImageIcon _appleImage;
 	ImageIcon _strawberryImage;
 	ImageIcon _emptyImage;
+	ImageIcon _pacman;
 	
 	// gameTools:
 	final static int EMPTY = 0, BLOCK = 1, PACMAN = 2, GHOST1 = 3, GHOST2 = 4, GHOST3 = 5, PILL = 6, ENERGY = 7,
@@ -34,7 +35,7 @@ public class BoardPanel extends JPanel {
 		_appleImage = new ImageIcon("images/apple.png");
 		_strawberryImage = new ImageIcon("images/strawberry.png");
 		_emptyImage=new ImageIcon("images/empty.png");
-		
+		_pacman=new ImageIcon("pacmanDown.png");
 		
 		
 	}
@@ -68,6 +69,9 @@ public class BoardPanel extends JPanel {
 				else if(receivedBoard[i][j]==EMPTY){
 					_emptyImage.paintIcon(this, g2, i * 25, j * 25);
 				}
+				else if(receivedBoard[i][j]==2){
+					_pacman.paintIcon(this, g2, i * 25, j * 25);
+				}
 			}
 		}
 		g.drawImage(offIm, 0, 0, this);// update the graphic with the second updeted one
@@ -76,5 +80,7 @@ public class BoardPanel extends JPanel {
 	public void setBoardSetUP(int[][] board) {
 		this.receivedBoard = board;
 	}
+	
+	
 
 }

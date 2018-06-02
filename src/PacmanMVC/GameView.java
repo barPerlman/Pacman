@@ -1,14 +1,16 @@
 package PacmanMVC;
 
 import java.awt.Dimension;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import ViewComponents.*;
 public class GameView extends JFrame {
-	BoardPanel boardPanel;
-	
+	private BoardPanel boardPanel;
+	GameController C;
 	public GameView(){
 		super("Pacman");
+		boardPanel=new BoardPanel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 800);
 		setMinimumSize(new Dimension(800, 800));
@@ -17,11 +19,12 @@ public class GameView extends JFrame {
 	}
 		
 	public void loadBoard(int[][] board) {
-		boardPanel=new BoardPanel();
 		boardPanel.setBoardSetUP(board);
+		//setContentPane(boardPanel);
 		add(boardPanel);
 		setVisible(true);
 	}
-		// TODO Auto-generated method stub
-
+	public void setBoardListener(KeyListener k) {
+	this.boardPanel.addKeyListener(k);
+	}
 }
