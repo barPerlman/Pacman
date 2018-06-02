@@ -20,19 +20,21 @@ public class GameController implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT){
-
+			_model.movePacman(KeyEvent.VK_LEFT);
+			_view.reBoard();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-
+			_model.movePacman(KeyEvent.VK_RIGHT);
+			_view.reBoard();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP){
-			_model.set2();
+			_model.movePacman(KeyEvent.VK_UP);
 			_view.reBoard();
-		
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN){
+			_model.movePacman(KeyEvent.VK_DOWN);
+			_view.reBoard();
 		}
-		System.out.println("hi");
 		
 	}
 

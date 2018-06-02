@@ -7,8 +7,10 @@ import javax.swing.JFrame;
 import ViewComponents.*;
 public class GameView extends JFrame {
 	private BoardPanel boardPanel;
+	private int _points;
 	public GameView(){
 		super("Pacman");
+		_points=0;
 		boardPanel=new BoardPanel();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 800);
@@ -28,6 +30,10 @@ public class GameView extends JFrame {
 	}
 	public void reBoard() {
 		boardPanel.repaint();
+	}
+	
+	public void addPoints(int n) {
+		_points+=n;	
 	}
 
 }

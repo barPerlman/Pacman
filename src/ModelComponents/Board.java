@@ -4,12 +4,14 @@ import java.util.Random;
 
 public class Board {
 	int[][] _currBoard;
+	private Pacman _pacman;
 	final static int SIZE=32;
 	//gameTools:
 	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
 			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
 	
 	public Board(int level){
+		_pacman = new Pacman(15, 15);
 		_currBoard=new int[32][32];
 		switch(level){
 			case 1:
@@ -99,6 +101,35 @@ public class Board {
 			return false;
 		}
 		return true;
+	}
+	
+	public void MovePacRight() {
+		int tPacLine = _pacman.get_posLine();
+		int tPacCol = _pacman.get_posColum();
+		_currBoard[tPacLine][tPacCol]=EMPTY;
+		_currBoard[tPacLine][tPacCol+1]=PACMAN;
+		_pacman.set_pos(tPacLine, tPacCol+1);
+	}
+	public void MovePacLeft() {
+		int tPacLine = _pacman.get_posLine();
+		int tPacCol = _pacman.get_posColum();
+		_currBoard[tPacLine][tPacCol]=EMPTY;
+		_currBoard[tPacLine][tPacCol-1]=PACMAN;
+		_pacman.set_pos(tPacLine, tPacCol-1);
+	}
+	public void MovePacDown() {
+		int tPacLine = _pacman.get_posLine();
+		int tPacCol = _pacman.get_posColum();
+		_currBoard[tPacLine][tPacCol]=EMPTY;
+		_currBoard[tPacLine+1][tPacCol]=PACMAN;
+		_pacman.set_pos(tPacLine+1, tPacCol);
+	}
+	public void MovePacUp() {
+		int tPacLine = _pacman.get_posLine();
+		int tPacCol = _pacman.get_posColum();
+		_currBoard[tPacLine][tPacCol]=EMPTY;
+		_currBoard[tPacLine-1][tPacCol]=PACMAN;
+		_pacman.set_pos(tPacLine-1, tPacCol);
 	}
 	
 }
