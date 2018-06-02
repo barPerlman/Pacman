@@ -1,13 +1,18 @@
 package ViewComponents;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class BoardPanel extends JPanel{
 
+	ImageIcon resizedBlock;
 	public BoardPanel() {
-		
+		resizedBlock=new ImageIcon("images/block25.png");
 	}
 	
 public void paint(Graphics g){
@@ -54,9 +59,11 @@ public void paint(Graphics g){
 		for(int i=0;i<boardLevel1.length;i++){
 			for(int j=0;j<boardLevel1.length;j++){
 				if(boardLevel1[i][j]==1){
-					g.fillRect(i*25, j*25, 25, 25);
+					//g.fillRect(i*25, j*25, 25, 25);
+					resizedBlock.paintIcon(this, g, i*25, j*25);
 				}
 			}
 		}
 	}
+
 }
