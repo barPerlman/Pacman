@@ -9,6 +9,7 @@ public class GameController {
 		this.view=view;
 		this.model=model;
 		view.loadBoard(model.currBoardSetUp());
+		view.setVisible(true);
 	}
 	
 }

@@ -7,9 +7,6 @@ public class MainClass {
 		GameView view=new GameView();
 		GameModel model=new GameModel();
 		GameController controller=new GameController(view,model);
-		
-		view.setVisible(true);
-
 	}
 
 }
