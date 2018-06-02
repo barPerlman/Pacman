@@ -13,10 +13,16 @@ public class GameView extends JFrame {
 		setSize(800, 800);
 		setMinimumSize(new Dimension(800, 800));
 		setMaximumSize(new Dimension(800, 800));
-		boardPanel=new BoardPanel();
-		add(boardPanel);
 		
+		setVisible(false);
 	}
-	
+		
+	public void loadBoard(int[][] board) {
+		boardPanel=new BoardPanel();
+		boardPanel.setBoardSetUP(board);
+		boardPanel.repaint();
+		setVisible(true);
+	}
+		// TODO Auto-generated method stub
 
 }

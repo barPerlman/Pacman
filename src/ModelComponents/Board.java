@@ -68,6 +68,8 @@ public class Board {
 	public void removeCharacterFromBoardCell(int x,int y){
 		currBoard[x][y]=EMPTY;
 	}
+	public int[][] getBoard(){
+		return currBoard;
+	}
 	
-
 }

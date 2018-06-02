@@ -17,7 +17,7 @@ public class BoardPanel extends JPanel{
 	
 	//receivedBoard initialized to the level1 board
 	//the controller updates later the board appearance
-	int[][] receivedBoard={
+	private int[][] receivedBoard;/*={
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
 			{1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1},
@@ -50,7 +50,7 @@ public class BoardPanel extends JPanel{
 			{1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-			};
+			};*/
 	
 	
 	public BoardPanel() {
@@ -72,6 +72,11 @@ public void paint(Graphics g){
 			}
 		}
 		g.drawImage(offIm, 0, 0, this);//update the graphic with the second updeted one
+	}
+
+	public void setBoardSetUP(int[][] board) {
+	 this.receivedBoard=board;
+		
 	}
 
 }
