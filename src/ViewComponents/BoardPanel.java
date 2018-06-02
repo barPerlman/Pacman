@@ -49,29 +49,29 @@ public class BoardPanel extends JPanel {
 		for (int i = 0; i < receivedBoard.length; i++) {
 			for (int j = 0; j < receivedBoard.length; j++) {
 				if (receivedBoard[i][j] == BLOCK) {
-					// g.fillRect(i*25, j*25, 25, 25);
-					_blockImage.paintIcon(this, g2, i * 25, j * 25);
+					
+					_blockImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==PILL){
-					_pillImage.paintIcon(this, g2, i * 25, j * 25);
+					_pillImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==ENERGY){
-					_energyImage.paintIcon(this, g2, i * 25, j * 25);
+					_energyImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==PINEAPPLE){
-					_pineappleImage.paintIcon(this, g2, i * 25, j * 25);
+					_pineappleImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==APPLE){
-					_appleImage.paintIcon(this, g2, i * 25, j * 25);
+					_appleImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==STRAWBERRY){
-					_strawberryImage.paintIcon(this, g2, i * 25, j * 25);
+					_strawberryImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==EMPTY){
-					_emptyImage.paintIcon(this, g2, i * 25, j * 25);
+					_emptyImage.paintIcon(this, g2, j * 25, i * 25);
 				}
 				else if(receivedBoard[i][j]==PACMAN){
-					_pacman.paintIcon(this, g2, i * 25, j * 25);
+					_pacman.paintIcon(this, g2, j * 25, i * 25);
 				}
 			}
 		}
