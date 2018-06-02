@@ -78,16 +78,27 @@ public class Board {
 		int tX,tY;
 		Random rand=new Random();
 		//randomize for each fruit
-		for(int i=PINEAPPLE;i<=STRAWBERRY;i++){
+		for(int tGameTool=PINEAPPLE;tGameTool<=STRAWBERRY;tGameTool++){
 		//locate current fruit into empty place
 			do{
 				tX=rand.nextInt(31);
 				tY=rand.nextInt(31);
 			}while(_currBoard[tX][tY]!=EMPTY);
 		
-			_currBoard[tX][tY]=i;
-		
+			_currBoard[tX][tY]=tGameTool;	
 		}
+	}
+	
+	//swap between gameTools inside the board
+	public void swap(int x1,int y1,int gameTool1,int x2,int y2,int gameTool2){
+		//cases to check: gameTool 1 is the eater and 2 is eaten or they are equal
+	}
+	//checks if swap between two given characters is valid
+	public boolean isLegalSwap(int gameTool1,int gameTool2){
+		if(gameTool1==BLOCK||gameTool2==BLOCK){
+			return false;
+		}
+		return true;
 	}
 	
 }
