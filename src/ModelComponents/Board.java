@@ -1,14 +1,16 @@
 package ModelComponents;
 
+import java.util.Random;
+
 public class Board {
-	int[][] currBoard;
+	int[][] _currBoard;
 	final static int SIZE=32;
 	//gameTools:
 	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
 			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
 	
 	public Board(int level){
-		currBoard=new int[32][32];
+		_currBoard=new int[32][32];
 		switch(level){
 			case 1:
 				initBoardLvl1();
@@ -57,19 +59,35 @@ public class Board {
 				{1,1,1,1,1,1,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,1,1,1,1,1},
 				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 				};
-		currBoard=lvl1Board;
+		_currBoard=lvl1Board;
 	}
 	
 	//put the gameTool in the (x,y) cell in board
 	public void addCharacterToBoardCell(int x,int y,int gameTool){	
-		currBoard[x][y]=gameTool;
+		_currBoard[x][y]=gameTool;
 	}
 	//remove the game tool from the (x,y) cell in board
 	public void removeCharacterFromBoardCell(int x,int y){
-		currBoard[x][y]=EMPTY;
+		_currBoard[x][y]=EMPTY;
 	}
 	public int[][] getBoard(){
-		return currBoard;
+		return _currBoard;
+	}
+	//randomize fruits location and insert into board
+	public void randomizeFruitsLocation(){
+		int tX,tY;
+		Random rand=new Random();
+		//randomize for each fruit
+		for(int i=PINEAPPLE;i<=STRAWBERRY;i++){
+		//locate current fruit into empty place
+			do{
+				tX=rand.nextInt(31);
+				tY=rand.nextInt(31);
+			}while(_currBoard[tX][tY]!=EMPTY);
+		
+			_currBoard[tX][tY]=i;
+		
+		}
 	}
 	
 }
