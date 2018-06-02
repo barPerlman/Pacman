@@ -11,7 +11,7 @@ public class Board {
 			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
 	
 	public Board(int level){
-		_pacman = new Pacman(15, 15);
+		_pacman = new Pacman(15,12);
 		_currBoard=new int[32][32];
 		switch(level){
 			case 1:
@@ -61,7 +61,9 @@ public class Board {
 				{1,1,1,1,1,1,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,1,1,1,1,1},
 				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 				};
+	
 		_currBoard=lvl1Board;
+		_currBoard[15][12]=PACMAN;
 	}
 	
 	//put the gameTool in the (x,y) cell in board
@@ -106,30 +108,35 @@ public class Board {
 	public void MovePacRight() {
 		int tPacLine = _pacman.get_posLine();
 		int tPacCol = _pacman.get_posColum();
+		if(_currBoard[0].length>tPacCol+1 && _currBoard[tPacLine][tPacCol+1]!=BLOCK) {
 		_currBoard[tPacLine][tPacCol]=EMPTY;
 		_currBoard[tPacLine][tPacCol+1]=PACMAN;
 		_pacman.set_pos(tPacLine, tPacCol+1);
+		}
 	}
 	public void MovePacLeft() {
 		int tPacLine = _pacman.get_posLine();
 		int tPacCol = _pacman.get_posColum();
+		if(0<=tPacCol-1 && _currBoard[tPacLine][tPacCol-1]!=BLOCK) {
 		_currBoard[tPacLine][tPacCol]=EMPTY;
 		_currBoard[tPacLine][tPacCol-1]=PACMAN;
-		_pacman.set_pos(tPacLine, tPacCol-1);
+		_pacman.set_pos(tPacLine, tPacCol-1);}
 	}
 	public void MovePacDown() {
 		int tPacLine = _pacman.get_posLine();
 		int tPacCol = _pacman.get_posColum();
+		if(_currBoard.length>tPacLine+1 && _currBoard[tPacLine+1][tPacCol]!=BLOCK) {
 		_currBoard[tPacLine][tPacCol]=EMPTY;
 		_currBoard[tPacLine+1][tPacCol]=PACMAN;
-		_pacman.set_pos(tPacLine+1, tPacCol);
+		_pacman.set_pos(tPacLine+1, tPacCol);}
 	}
 	public void MovePacUp() {
 		int tPacLine = _pacman.get_posLine();
 		int tPacCol = _pacman.get_posColum();
+		if(0<=tPacLine-1 && _currBoard[tPacLine-1][tPacCol]!=BLOCK) {
 		_currBoard[tPacLine][tPacCol]=EMPTY;
 		_currBoard[tPacLine-1][tPacCol]=PACMAN;
-		_pacman.set_pos(tPacLine-1, tPacCol);
+		_pacman.set_pos(tPacLine-1, tPacCol);}
 	}
 	
 }
