@@ -60,16 +60,18 @@ public class BoardPanel extends JPanel{
 	
 public void paint(Graphics g){
 		
-
-		
+	Image offIm = createImage(800, 800);
+	Graphics g2 = offIm.getGraphics();
+		//this draw the board on the second graphic
 		for(int i=0;i<receivedBoard.length;i++){
 			for(int j=0;j<receivedBoard.length;j++){
 				if(receivedBoard[i][j]==BLOCK){
 					//g.fillRect(i*25, j*25, 25, 25);
-					blockImage.paintIcon(this, g, i*25, j*25);
+					blockImage.paintIcon(this, g2, i*25, j*25);
 				}
 			}
 		}
+		g.drawImage(offIm, 0, 0, this);//update the graphic with the second updeted one
 	}
 
 }
