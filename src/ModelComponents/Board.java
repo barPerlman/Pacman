@@ -1,10 +1,21 @@
 package ModelComponents;
 
+import java.awt.Point;
 import java.util.Random;
 
 public class Board {
 	int[][] _currBoard;
 	private Pacman _pacman;
+	//fruits instances
+	private Fruit _pineapple;
+	private Fruit _apple;
+	private Fruit _strawberry;
+	private Fruit[] _fruits;
+	private boolean _isFruitsTime;//is it time to draw fruits
+	private int _secondsFlicked;//tells how many seconds the fruits flicked 
+
+
+
 	final static int SIZE=32;
 	//gameTools:
 	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
@@ -12,6 +23,14 @@ public class Board {
 	
 	public Board(int level){
 		_pacman = new Pacman(15,12);
+		//fruits initials:
+		_pineapple=new Fruit(PINEAPPLE,100);
+		_apple=new Fruit(APPLE,200);
+		_strawberry=new Fruit(STRAWBERRY,300);
+		_fruits=new Fruit[3];
+		_fruits[0]=_pineapple;
+		_fruits[1]=_apple;
+		_fruits[2]=_strawberry;
 		_currBoard=new int[32][32];
 		switch(level){
 			case 1:
@@ -88,8 +107,10 @@ public class Board {
 				tX=rand.nextInt(31);
 				tY=rand.nextInt(31);
 			}while(_currBoard[tX][tY]!=EMPTY);
-		
-			_currBoard[tX][tY]=tGameTool;	
+			//update the location of the fruit
+			_fruits[tGameTool-8].set_position(new Point(tX, tY));
+			_fruits[tGameTool-8].setOnBoard(true);//now its on board
+			_currBoard[tX][tY]=tGameTool;//update board with the fruit	
 		}
 	}
 	
@@ -138,5 +159,44 @@ public class Board {
 		_currBoard[tPacLine-1][tPacCol]=PACMAN;
 		_pacman.set_pos(tPacLine-1, tPacCol);}
 	}
-	
+	/**
+	 * flicker fruits on board (change their visibility on board) one time
+	 * from in board to not and the opposite
+	 */
+	public void flickeringFruits(){
+		for(int i=0;i<3;i++){
+			//change visibility status
+			boolean tVisibilityStatus=_fruits[i].isOnBoard();
+			Fruit tCurrFruit=_fruits[i];
+			_fruits[i].setOnBoard(!tVisibilityStatus);
+			int tX=(int) _fruits[i].get_position().getX();
+			int tY=(int) _fruits[i].get_position().getY();
+			if(tVisibilityStatus){
+				_currBoard[tX][tY]=EMPTY;
+				_fruits[i].setOnBoard(false);
+			}
+			else if(!(tCurrFruit.get_isEaten())){//fruits are not on board and should be
+				_currBoard[tX][tY]=_fruits[i].get_fruitType();//set into board
+			}
+			
+		}
+	}
+
+
+	public boolean is_isFruitsTime() {
+		return _isFruitsTime;
+	}
+
+
+	public void set_isFruitsTime(boolean _isFruitsTime) {
+		this._isFruitsTime = _isFruitsTime;
+	}
+	public int get_secondsFlicked() {
+		return _secondsFlicked;
+	}
+
+
+	public void set_secondsFlicked(int _secondsFlicked) {
+		this._secondsFlicked = _secondsFlicked;
+	}
 }

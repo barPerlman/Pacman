@@ -36,5 +36,25 @@ public class GameModel {
 		}
 		
 	}
+
+
+	public Board get_board() {
+		return _board;
+	}
+
+
+	public void set_board(Board _board) {
+		this._board = _board;
+	}
+
+
+	public static int get_points() {
+		return _points;
+	}
+
+
+	public static void set_points(int _points) {
+		GameModel._points = _points;
+	}
 }
 

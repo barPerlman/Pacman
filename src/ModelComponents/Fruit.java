@@ -13,14 +13,14 @@ public class Fruit {
 	private int _pointsValue;//amount of points pacman earns when eats this
 	private boolean isOnBoard;//is visible on board
 	private Point _position;
+	private boolean _isEaten;
 	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
 			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
 	//constructor
-	public Fruit(int fruitType,int pointsValue,Point pos){
+	public Fruit(int fruitType,int pointsValue){
 		
 		this._fruitType=fruitType;
 		this._pointsValue=pointsValue;
-		this._position=pos;
 		this.isOnBoard=false;
 	}
 //setters and getters
@@ -54,6 +54,12 @@ public class Fruit {
 
 	public void set_position(Point _position) {
 		this._position = _position;
+	}
+	public boolean get_isEaten() {
+		return _isEaten;
+	}
+	public void set_isEaten(boolean _isEaten) {
+		this._isEaten = _isEaten;
 	}
 	
 	

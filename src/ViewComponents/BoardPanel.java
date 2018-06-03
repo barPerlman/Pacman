@@ -19,6 +19,10 @@ public class BoardPanel extends JPanel {
 	ImageIcon _emptyImage;
 	ImageIcon _pacman;
 	
+	private boolean isGameStarted;//holds if game (timer) started
+	
+	
+
 	// gameTools:
 	final static int EMPTY = 0, BLOCK = 1, PACMAN = 2, GHOST1 = 3, GHOST2 = 4, GHOST3 = 5, PILL = 6, ENERGY = 7,
 			PINEAPPLE = 8, APPLE = 9, STRAWBERRY = 10;
@@ -82,7 +86,13 @@ public class BoardPanel extends JPanel {
 		this.receivedBoard = board;
 	}
 	
-	
+	public boolean getIsGameStarted() {
+		return isGameStarted;
+	}
+
+	public void setGameStarted(boolean isGameStarted) {
+		this.isGameStarted = isGameStarted;
+	}
 
 	
 
