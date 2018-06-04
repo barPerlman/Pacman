@@ -15,7 +15,8 @@ public class Board {
 	private int _secondsFlicked;//tells how many seconds the fruits flicked 
 	private int _secondsFadeOut;//tells how many seconds the fruits are faded out 
 	private boolean _gameStarted;//true if space pressed-tells if game started
-
+	
+	
 	final static int SIZE=32;
 	//gameTools:
 	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
@@ -23,25 +24,33 @@ public class Board {
 	
 	public Board(int level){
 		_pacman = new Pacman(15,12);
-		//fruits initials:
-		_pineapple=new Fruit(PINEAPPLE,100);
-		_apple=new Fruit(APPLE,200);
-		_strawberry=new Fruit(STRAWBERRY,300);
-		_fruits=new Fruit[3];
-		_fruits[0]=_pineapple;
-		_fruits[1]=_apple;
-		_fruits[2]=_strawberry;
 		_currBoard=new int[32][32];
+		generateLevelBoard(level);
+		
+		initBoardLvl1();//initialize the board with level 1 appearance
+	}
+
+/**
+ * generate fit board and instances to each level
+ * @param level
+ */
+	private void generateLevelBoard(int level) {
 		switch(level){
-			case 1:
+			case 1://level 1
+				//fruits initials:
+				_pineapple=new Fruit(PINEAPPLE,100,2);
+				_apple=new Fruit(APPLE,200,2);
+				_strawberry=new Fruit(STRAWBERRY,300,0);
+				_fruits=new Fruit[3];
+				_fruits[0]=_pineapple;
+				_fruits[1]=_apple;
+				_fruits[2]=_strawberry;
 				initBoardLvl1();
 				break;
 			
 			default:
 				System.out.println("wrong level input");
 		}
-		
-		initBoardLvl1();//initialize the board with level 1 appearance
 	}
 	
 	
@@ -108,9 +117,11 @@ public class Board {
 				tY=rand.nextInt(31);
 			}while(_currBoard[tX][tY]!=EMPTY);
 			//update the location of the fruit
+			if(_fruits[tGameTool-8].get_remainFruits()>0){
 			_fruits[tGameTool-8].set_position(new Point(tX, tY));
 			_fruits[tGameTool-8].setOnBoard(true);//now its on board
-			_currBoard[tX][tY]=tGameTool;//update board with the fruit	
+			_currBoard[tX][tY]=tGameTool;//update board with the fruit
+			}
 		}
 	}
 	
@@ -165,9 +176,12 @@ public class Board {
 	 */
 	public void flickeringFruits(){
 		for(int i=0;i<3;i++){
+			Fruit tCurrFruit=_fruits[i];
+			
+			if(tCurrFruit.get_remainFruits()>0){
 			//change visibility status
 			boolean tVisibilityStatus=_fruits[i].isOnBoard();
-			Fruit tCurrFruit=_fruits[i];
+			
 			_fruits[i].setOnBoard(!tVisibilityStatus);
 			int tX=(int) _fruits[i].get_position().getX();
 			int tY=(int) _fruits[i].get_position().getY();
@@ -178,7 +192,7 @@ public class Board {
 			else if(!(tCurrFruit.get_isEaten())){//fruits are not on board and should be
 				_currBoard[tX][tY]=_fruits[i].get_fruitType();//set into board
 			}
-			
+			}
 		}
 	}
 	/**
@@ -188,10 +202,12 @@ public class Board {
 		Fruit tCurrFruit;
 		for(int i=PINEAPPLE;i<=STRAWBERRY;i++){
 			tCurrFruit=_fruits[i-8];
+			if(tCurrFruit.get_remainFruits()>0){
 			int tRow=(int)tCurrFruit.get_position().getX();
 			int tCol=(int)tCurrFruit.get_position().getY();
 			removeCharacterFromBoardCell(tRow, tCol);
 			tCurrFruit.setOnBoard(false);
+			}
 		}
 	}
 

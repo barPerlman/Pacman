@@ -7,8 +7,9 @@ import ModelComponents.Board;
 public class GameModel {
 	private Board _board;
 	public static int _points;
+	private int _level=1;
 	public GameModel() {
-	 _board = new Board(1);
+	 _board = new Board(_level);
 	 _points=0;
 	}	
 		
