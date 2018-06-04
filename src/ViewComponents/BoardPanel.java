@@ -13,14 +13,28 @@ public class BoardPanel extends JPanel {
 	ImageIcon _blockImage;
 	ImageIcon _pillImage;
 	ImageIcon _energyImage;
+	
+	//original not faded icons
+	ImageIcon _pineappleImageOrig;
+	ImageIcon _appleImageOrig;
+	ImageIcon _strawberryImageOrig;
+	
+	
+	
 	ImageIcon _pineappleImage;
+	ImageIcon[] _pineAppleFadedImages;
+	
 	ImageIcon _appleImage;
+	ImageIcon[] _appleFadedImages;
+	
 	ImageIcon _strawberryImage;
+	ImageIcon[] _strawberryFadedImages;
+	
 	ImageIcon _emptyImage;
 	ImageIcon _pacman;
 	
-	private boolean isGameStarted;//holds if game (timer) started
-	
+	private boolean _isGameStarted;//holds if game (timer) started
+	private int _fadeSession;//current index of fade out picture;
 	
 
 	// gameTools:
@@ -35,11 +49,26 @@ public class BoardPanel extends JPanel {
 		_blockImage = new ImageIcon(_lvl1BlockPath);
 		_pillImage = new ImageIcon("images/pill.png");
 		_energyImage = new ImageIcon("images/energy.png");
-		_pineappleImage = new ImageIcon("images/pineapple.png");
-		_appleImage = new ImageIcon("images/apple.png");
-		_strawberryImage = new ImageIcon("images/strawberry.png");
+		_pineappleImageOrig = new ImageIcon("images/pineapple.png");
+		_appleImageOrig = new ImageIcon("images/apple.png");
+		_strawberryImageOrig = new ImageIcon("images/strawberry.png");
+		_pineappleImage=_pineappleImageOrig;
+		_appleImage=_appleImageOrig;
+		_strawberryImage=_strawberryImageOrig;
+		
 		_emptyImage=new ImageIcon("images/empty.png");
 		_pacman=new ImageIcon("images/pacmanDown.png");
+		_pineAppleFadedImages=new ImageIcon[3];
+		_appleFadedImages=new ImageIcon[3];
+		_strawberryFadedImages=new ImageIcon[3];
+		
+		for(int i=0;i<3;i++){
+			_pineAppleFadedImages[i]=new ImageIcon("images/pineFade"+i+".png");
+			_appleFadedImages[i]=new ImageIcon("images/appleFade"+i+".png");
+			_strawberryFadedImages[i]=new ImageIcon("images/strawberryFade"+i+".png");
+		}
+		
+		
 		setFocusable(true);
 		setRequestFocusEnabled(true);
 		
@@ -87,13 +116,36 @@ public class BoardPanel extends JPanel {
 	}
 	
 	public boolean getIsGameStarted() {
-		return isGameStarted;
+		return _isGameStarted;
 	}
 
 	public void setGameStarted(boolean isGameStarted) {
-		this.isGameStarted = isGameStarted;
+		this._isGameStarted = isGameStarted;
+	}
+	/**
+	 * this method perform a single fade out session
+	 * change to the next brightened picture
+	 */
+	public void singleFadeOut(){
+		this._appleImage=_appleFadedImages[_fadeSession];
+		this._pineappleImage=_pineAppleFadedImages[_fadeSession];
+		this._strawberryImage=_strawberryFadedImages[_fadeSession];
+		
 	}
 
-	
+	public int getFadeSession() {
+		return _fadeSession;
+	}
 
+	public void setFadeSession(int fadeSession) {
+		this._fadeSession = fadeSession;
+	}
+	public void returnToOriginImage(){
+		
+	
+	this._appleImage=_appleImageOrig;
+	this._pineappleImage=_pineappleImageOrig;
+	this._strawberryImage=_strawberryImageOrig;
+	
+	}
 }

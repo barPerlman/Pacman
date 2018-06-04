@@ -88,12 +88,26 @@ public class GameController implements KeyListener,ActionListener {
 				//raise counter
 				_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
 				
-			}
+			}//flickering first 3 seconds
 			else if(_view.get_secondsCounter()>10){
 				if(_model.get_board().get_secondsFlicked()<=4){
 					flickFruits();
 					_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
 				}
+				else{
+					//holds time since fruit has shown
+					int tSecSinceFruitShown=_model.get_board().get_secondsFlicked();
+					//time to move fruits from board
+					if(tSecSinceFruitShown>6&&tSecSinceFruitShown<=9){
+						FruitsFadeOut();//fade out fruits image
+						
+					}
+					//update time since fruits were shown on board in this interval
+					_model.get_board().set_secondsFlicked(tSecSinceFruitShown+1);
+						
+					
+				}
+				
 					
 				}
 			}
@@ -123,6 +137,27 @@ public void flickFruits(){
 		_view.reBoard();
 	
 	
+}
+/**
+ * fade out fruits
+ * change to to light version image till disapearing
+ *  
+ */
+public void FruitsFadeOut(){
+	//fade out counter in seconds
+	int tFadeOutCounter=_model.get_board().get_secondsFadeOut();
+	_model.get_board().set_secondsFadeOut(tFadeOutCounter+1);//raise counter
+	if(tFadeOutCounter<2){//2 seconds fading out
+		_view.getBoardPanel().singleFadeOut();
+		_view.reBoard();
+		_view.getBoardPanel().setFadeSession(_view.getBoardPanel().getFadeSession()+1);
+	}
+	else{
+		_view.getBoardPanel().setFadeSession(0);
+		_view.get_boardPanel().returnToOriginImage();
+		//remove fruits from board after fade out
+		_model.get_board().removeFruitsFromBoard();
+	}
 }
 
 }

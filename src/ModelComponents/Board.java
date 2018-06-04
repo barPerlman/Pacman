@@ -13,7 +13,7 @@ public class Board {
 	private Fruit[] _fruits;
 	private boolean _isFruitsTime;//is it time to draw fruits
 	private int _secondsFlicked;//tells how many seconds the fruits flicked 
-
+	private int _secondsFadeOut;//tells how many seconds the fruits are faded out 
 
 
 	final static int SIZE=32;
@@ -181,6 +181,19 @@ public class Board {
 			
 		}
 	}
+	/**
+	 * remove all fruits from board
+	 */
+	public void removeFruitsFromBoard(){
+		Fruit tCurrFruit;
+		for(int i=PINEAPPLE;i<=STRAWBERRY;i++){
+			tCurrFruit=_fruits[i-8];
+			int tRow=(int)tCurrFruit.get_position().getX();
+			int tCol=(int)tCurrFruit.get_position().getY();
+			removeCharacterFromBoardCell(tRow, tCol);
+			tCurrFruit.setOnBoard(false);
+		}
+	}
 
 
 	public boolean is_isFruitsTime() {
@@ -198,5 +211,15 @@ public class Board {
 
 	public void set_secondsFlicked(int _secondsFlicked) {
 		this._secondsFlicked = _secondsFlicked;
+	}
+
+
+	public int get_secondsFadeOut() {
+		return _secondsFadeOut;
+	}
+
+
+	public void set_secondsFadeOut(int _secondsFadeOut) {
+		this._secondsFadeOut = _secondsFadeOut;
 	}
 }
