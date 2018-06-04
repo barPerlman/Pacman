@@ -26,7 +26,7 @@ public class GameController implements KeyListener,ActionListener {
 	
 
 	public void keyPressed(KeyEvent e) {
-		
+		if(_model.get_board().getIsGameStarted()){
 		//events of key press for pacman moving
 		if (e.getKeyCode() == KeyEvent.VK_LEFT){
 			_model.movePacman(KeyEvent.VK_LEFT);
@@ -44,12 +44,16 @@ public class GameController implements KeyListener,ActionListener {
 			_model.movePacman(KeyEvent.VK_DOWN);
 			_view.reBoard();
 		}
+	}
 		//event of start game-press space
 		if(e.getKeyCode()==KeyEvent.VK_SPACE){
 			
+		
 			
 			//start gameTimer if its the first time space pressed
-			if(!(_view.getBoardPanel().getIsGameStarted())){//first space press
+			if(!(_model.get_board().getIsGameStarted())){//first space press
+				//change status of game to started
+				_model.get_board().setIsgameStarted(true);
 				//disappear the panel of "get ready"
 				
 				//initial and start timer

@@ -14,7 +14,7 @@ public class Board {
 	private boolean _isFruitsTime;//is it time to draw fruits
 	private int _secondsFlicked;//tells how many seconds the fruits flicked 
 	private int _secondsFadeOut;//tells how many seconds the fruits are faded out 
-
+	private boolean _gameStarted;//true if space pressed-tells if game started
 
 	final static int SIZE=32;
 	//gameTools:
@@ -221,5 +221,11 @@ public class Board {
 
 	public void set_secondsFadeOut(int _secondsFadeOut) {
 		this._secondsFadeOut = _secondsFadeOut;
+	}
+	public boolean getIsGameStarted(){
+		return _gameStarted;
+	}
+	public void setIsgameStarted(boolean isStarted){
+		this._gameStarted=isStarted;
 	}
 }

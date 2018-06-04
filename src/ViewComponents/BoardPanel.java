@@ -33,7 +33,6 @@ public class BoardPanel extends JPanel {
 	ImageIcon _emptyImage;
 	ImageIcon _pacman;
 	
-	private boolean _isGameStarted;//holds if game (timer) started
 	private int _fadeSession;//current index of fade out picture;
 	
 
@@ -121,13 +120,6 @@ public class BoardPanel extends JPanel {
 		this.receivedBoard = board;
 	}
 	
-	public boolean getIsGameStarted() {
-		return _isGameStarted;
-	}
-
-	public void setGameStarted(boolean isGameStarted) {
-		this._isGameStarted = isGameStarted;
-	}
 	/**
 	 * this method perform a single fade out session
 	 * change to the next brightened picture
