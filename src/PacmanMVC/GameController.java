@@ -120,7 +120,7 @@ public class GameController implements KeyListener,ActionListener {
 	 */
 public boolean updateAndCheckFruitTime(){
 	if(_view.get_secondsCounter()>=10){//fruitsAre drawble(after 10 secs)
-		if(_view.get_secondsCounter()%10==0){//time to start draw fruits
+		if(_view.get_secondsCounter()%22==0||_view.get_secondsCounter()==10){//time to start draw fruits
 			
 			_model.get_board().set_isFruitsTime(true);
 			return true;
@@ -153,10 +153,12 @@ public void FruitsFadeOut(){
 		_view.getBoardPanel().setFadeSession(_view.getBoardPanel().getFadeSession()+1);
 	}
 	else{
+		_model.get_board().set_secondsFadeOut(0);//zeroize fadeOut counter
 		_view.getBoardPanel().setFadeSession(0);
 		_view.get_boardPanel().returnToOriginImage();
 		//remove fruits from board after fade out
 		_model.get_board().removeFruitsFromBoard();
+		_view.reBoard();
 	}
 }
 
