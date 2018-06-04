@@ -8,7 +8,7 @@ package ModelComponents;
 import java.awt.Point;
 import javax.swing.text.Position;
 
-public class Fruit {
+public class Fruit extends GameTool{
 	private int _fruitType;//tells what kind of fruit is it
 	private int _pointsValue;//amount of points pacman earns when eats this
 	private boolean isOnBoard;//is visible on board
@@ -68,6 +68,41 @@ public class Fruit {
 	}
 	public void set_remainFruits(int _remainFruits) {
 		this._remainFruits = _remainFruits;
+	}
+	@Override
+	public void visit(Fruit fruit) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(Pacman pacman) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(Ghost ghost) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(FireBall fireBall) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(WaterSplash waterSplash) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void accept(GameTool gameTool) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void eats(GameTool gameTool) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
