@@ -77,39 +77,8 @@ public class GameController implements KeyListener,ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==_gameTimer){//delay has been reached
-			//raise seconds counter
-			_view.set_secondsCounter(_view.get_secondsCounter()+1);
-			
-			boolean tFruitTime=updateAndCheckFruitTime();//check if its fruit time
-			if(tFruitTime){
-				_model.get_board().set_secondsFlicked(0);//zeroize counter for flick seconds
-				_model.get_board().randomizeFruitsLocation();//set fruits location
-				_view.reBoard();
-				//raise counter
-				_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
-				
-			}//flickering first 3 seconds
-			else if(_view.get_secondsCounter()>10){
-				if(_model.get_board().get_secondsFlicked()<=4){
-					flickFruits();
-					_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
-				}
-				else{
-					//holds time since fruit has shown
-					int tSecSinceFruitShown=_model.get_board().get_secondsFlicked();
-					//time to move fruits from board
-					if(tSecSinceFruitShown>6&&tSecSinceFruitShown<=9){
-						FruitsFadeOut();//fade out fruits image
-						
-					}
-					//update time since fruits were shown on board in this interval
-					_model.get_board().set_secondsFlicked(tSecSinceFruitShown+1);
-						
-					
-				}
-				
-					
-				}
+			//Fruits scattering and dispose perform
+			fruitsOnBoardManagement();
 			}
 		}
 		
@@ -160,6 +129,46 @@ public void FruitsFadeOut(){
 		_model.get_board().removeFruitsFromBoard();
 		_view.reBoard();
 	}
+}
+/**
+ * this method manage performs of in each delay reach:
+ * scattering fruits on board
+ * dispose fruits from board 
+ */
+public void fruitsOnBoardManagement(){
+	//raise seconds counter
+	_view.set_secondsCounter(_view.get_secondsCounter()+1);
+	
+	boolean tFruitTime=updateAndCheckFruitTime();//check if its fruit time
+	if(tFruitTime){
+		_model.get_board().set_secondsFlicked(0);//zeroize counter for flick seconds
+		_model.get_board().randomizeFruitsLocation();//set fruits location
+		_view.reBoard();
+		//raise counter
+		_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
+		
+	}//flickering first 3 seconds
+	else if(_view.get_secondsCounter()>10){
+		if(_model.get_board().get_secondsFlicked()<=4){
+			flickFruits();
+			_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
+		}
+		else{
+			//holds time since fruit has shown
+			int tSecSinceFruitShown=_model.get_board().get_secondsFlicked();
+			//time to move fruits from board
+			if(tSecSinceFruitShown>6&&tSecSinceFruitShown<=9){
+				FruitsFadeOut();//fade out fruits image
+				
+			}
+			//update time since fruits were shown on board in this interval
+			_model.get_board().set_secondsFlicked(tSecSinceFruitShown+1);
+				
+			
+		}
+		
+			
+		}
 }
 
 }
