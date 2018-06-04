@@ -46,6 +46,15 @@ public class BoardPanel extends JPanel {
 	private int[][] receivedBoard;
 
 	public BoardPanel() {
+		imagesSourceInit();
+		setFocusable(true);
+		setRequestFocusEnabled(true);
+		
+	}
+/**
+ * initial the image icons with a source
+ */
+	private void imagesSourceInit() {
 		_blockImage = new ImageIcon(_lvl1BlockPath);
 		_pillImage = new ImageIcon("images/pill.png");
 		_energyImage = new ImageIcon("images/energy.png");
@@ -67,19 +76,16 @@ public class BoardPanel extends JPanel {
 			_appleFadedImages[i]=new ImageIcon("images/appleFade"+i+".png");
 			_strawberryFadedImages[i]=new ImageIcon("images/strawberryFade"+i+".png");
 		}
-		
-		
-		setFocusable(true);
-		setRequestFocusEnabled(true);
-		
 	}
-
+/**
+ * paint the board as graphic panel
+ */
 	public void paint(Graphics g) {
 
 		Image offIm = createImage(800, 800);
 		Graphics g2 = offIm.getGraphics();
 		// this draw the board on the second graphic
-		for (int i = 0; i < receivedBoard.length; i++) {
+		for (int i = 0; i < receivedBoard.length; i++) {//draw the suit image 
 			for (int j = 0; j < receivedBoard.length; j++) {
 				if (receivedBoard[i][j] == BLOCK) {
 					
