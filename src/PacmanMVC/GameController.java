@@ -8,12 +8,14 @@ import java.awt.event.KeyListener;
 
 import javax.swing.Timer;
 
+import ModelComponents.GameTimer;
+
 public class GameController implements KeyListener,ActionListener {
 
 	private GameView _view;
 	private GameModel _model;
 	private Timer _gameTimer;//the timer of the game
-	
+	private GameTimer _timer;
 	
 	
 	public GameController(GameView view,GameModel model){
@@ -56,7 +58,9 @@ public class GameController implements KeyListener,ActionListener {
 				//change status of game to started
 				_model.get_board().setIsgameStarted(true);
 				//disappear the panel of "get ready"
-				
+				//timer from class
+			//	_timer.getInstance();
+				//_timer.addListener(//object);
 				//initial and start timer
 				this._gameTimer=new Timer(1000,this);
 				_gameTimer.start();
@@ -162,7 +166,7 @@ public void fruitsOnBoardManagement(){
 	
 	
 	else if(_view.get_secondsCounter()>10&&tFruitsInBoard){
-		_model.get_board().set_fruitsOnBoard(false);
+		
 		if(_model.get_board().get_secondsFlicked()<=4){//time to flick fruits
 			flickFruits();
 			_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
