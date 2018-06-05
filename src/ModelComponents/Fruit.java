@@ -8,15 +8,15 @@ package ModelComponents;
 import java.awt.Point;
 import javax.swing.text.Position;
 
-public class Fruit extends GameTool{
+public class Fruit{
 	private int _fruitType;//tells what kind of fruit is it
 	private int _pointsValue;//amount of points pacman earns when eats this
 	private boolean isOnBoard;//is visible on board
 	private Point _position;//location of the fruit on board
 	private boolean _isEatenStatus;//holds the status of current fruit on board
 	private int _remainFruits;//holds the amount of fruit currently available
-	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOST1=3,GHOST2=4,GHOST3=5,
-			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10;
+	final static int EMPTY=0,BLOCK=1,PACMAN=2,GHOSTGINKEY=3,GHOSTINKY=4,GHOSTBLINKEY=5,
+			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10,FIREBALL=11,WATERSPLASH=12;
 	//constructor
 	public Fruit(int fruitType,int pointsValue,int ramainFruitsInLevel){
 		this._remainFruits=ramainFruitsInLevel;
@@ -69,43 +69,7 @@ public class Fruit extends GameTool{
 	public void set_remainFruits(int _remainFruits) {
 		this._remainFruits = _remainFruits;
 	}
-	@Override
-	public void visit(Fruit fruit) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(Pacman pacman) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(Ghost ghost) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(FireBall fireBall) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(WaterSplash waterSplash) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void accept(GameTool gameTool) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void eats(GameTool gameTool) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+
 	
 	
 }

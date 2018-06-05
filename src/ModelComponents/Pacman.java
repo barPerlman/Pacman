@@ -1,7 +1,7 @@
 package ModelComponents;
 import java.awt.Point;
 
-public class Pacman extends GameTool {
+public class Pacman {
 	private Point _pos;
 	private int pointEarnsInEvent;//received points from interaction
 	private boolean _isAlive;//status of life
@@ -24,49 +24,5 @@ public class Pacman extends GameTool {
 	}
 
 	
-	
-	@Override
-	public void visit(Fruit fruit) {
-		
-		
-	}
-
-	@Override
-	public void visit(Pacman pacman) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(Ghost ghost) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(FireBall fireBall) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(WaterSplash waterSplash) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * visitor,visited pattern implementation
-	 */
-	public void accept(GameTool gameTool) {
-		gameTool.visit(this);
-		
-	}
-
-	@Override
-	public void eats(GameTool gameTool) {
-		gameTool.accept(this);
-		
-	}
 	
 }

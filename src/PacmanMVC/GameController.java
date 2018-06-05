@@ -27,6 +27,7 @@ public class GameController implements KeyListener,ActionListener {
 
 	public void keyPressed(KeyEvent e) {
 		if(_model.get_board().getIsGameStarted()){
+			System.out.println(_model.get_board().getScore());
 		//events of key press for pacman moving
 		if (e.getKeyCode() == KeyEvent.VK_LEFT){
 			_model.movePacman(KeyEvent.VK_LEFT);
@@ -131,9 +132,13 @@ public void FruitsFadeOut(){
 		_view.get_boardPanel().returnToOriginImage();
 		//remove fruits from board after fade out
 		_model.get_board().removeFruitsFromBoard();
+		//zeroize is eaten status of fruits
+			_model.get_board().zeroizeEatenStatus();
+		}
+		
 		_view.reBoard();
 	}
-}
+
 /**
  * this method manage performs of in each delay reach:
  * scattering fruits on board
@@ -144,20 +149,26 @@ public void fruitsOnBoardManagement(){
 	_view.set_secondsCounter(_view.get_secondsCounter()+1);
 	
 	boolean tFruitTime=updateAndCheckFruitTime();//check if its fruit time
-	if(tFruitTime){
+	boolean tFruitsInBoard=_model.get_board().is_fruitsOnBoard();//fruit on board status
+	if(tFruitTime&&_model.get_board().placeForFruits()){
 		_model.get_board().set_secondsFlicked(0);//zeroize counter for flick seconds
 		_model.get_board().randomizeFruitsLocation();//set fruits location
+		_model.get_board().set_fruitsOnBoard(true);
 		_view.reBoard();
 		//raise counter
 		_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
 		
 	}//flickering first 3 seconds
-	else if(_view.get_secondsCounter()>10){
-		if(_model.get_board().get_secondsFlicked()<=4){
+	
+	
+	else if(_view.get_secondsCounter()>10&&tFruitsInBoard){
+		_model.get_board().set_fruitsOnBoard(false);
+		if(_model.get_board().get_secondsFlicked()<=4){//time to flick fruits
 			flickFruits();
 			_model.get_board().set_secondsFlicked(_model.get_board().get_secondsFlicked()+1);
 		}
-		else{
+		else{//not flicking anymore
+			_model.get_board().set_isFlickerEmpty(false);//set back the flag to not flickering
 			//holds time since fruit has shown
 			int tSecSinceFruitShown=_model.get_board().get_secondsFlicked();
 			//time to move fruits from board
