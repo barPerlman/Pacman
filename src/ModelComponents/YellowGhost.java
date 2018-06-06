@@ -2,6 +2,9 @@ package ModelComponents;
 
 public class YellowGhost extends Ghost{
 
+	private FireBall fire;
+	
+	
 	public YellowGhost(int name, int delay, int weapon) {
 		super(name, delay, weapon);
 		// TODO Auto-generated constructor stub

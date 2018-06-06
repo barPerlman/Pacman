@@ -2,10 +2,7 @@ package ModelComponents;
 
 public class RedGhost extends Ghost{
 
-	
-	
-	
-	
+	private WaterSplash water;
 	
 	
 	public RedGhost(int name, int delay, int weapon) {
