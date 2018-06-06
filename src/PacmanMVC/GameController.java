@@ -50,9 +50,6 @@ public class GameController implements KeyListener,ActionListener {
 	}
 		//event of start game-press space
 		if(e.getKeyCode()==KeyEvent.VK_SPACE){
-			
-		
-			
 			//start gameTimer if its the first time space pressed
 			if(!(_model.get_board().getIsGameStarted())){//first space press
 				//change status of game to started

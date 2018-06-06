@@ -9,6 +9,8 @@ import java.awt.Point;
 import javax.swing.text.Position;
 
 public class Fruit{
+	
+	private int _timeCounter; //time counter for fruits actions
 	private int _fruitType;//tells what kind of fruit is it
 	private int _pointsValue;//amount of points pacman earns when eats this
 	private boolean isOnBoard;//is visible on board
