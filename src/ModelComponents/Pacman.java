@@ -1,7 +1,7 @@
 package ModelComponents;
 import java.awt.Point;
 
-public class Pacman {
+public abstract class Pacman implements Visited{
 	private Point _pos;
 	private int pointEarnsInEvent;//received points from interaction
 	private boolean _isAlive;//status of life

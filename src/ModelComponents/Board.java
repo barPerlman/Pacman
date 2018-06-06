@@ -27,7 +27,7 @@ public class Board {
 			PILL=6,ENERGY=7,PINEAPPLE=8,APPLE=9,STRAWBERRY=10,FIREBALL=11,WATERSPLASH=12;
 	
 	public Board(int level){
-		_pacman = new Pacman(15,12);
+		_pacman = new NicePacman(15,12);
 		_currBoard=new int[32][32];
 		generateLevelBoard(level);
 		

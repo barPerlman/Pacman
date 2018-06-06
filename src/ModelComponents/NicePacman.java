@@ -7,4 +7,10 @@ public class NicePacman extends Pacman {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void accept(Visitor v) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -6,5 +6,11 @@ public class SafePacman extends Pacman {
 		super(x, y);
 		
 	}
+
+	@Override
+	public void accept(Visitor v) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
