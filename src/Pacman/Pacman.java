@@ -1,4 +1,4 @@
-package ModelComponents;
+package Pacman;
 import java.awt.Point;
 
 public abstract class Pacman implements Visited{
@@ -23,6 +23,6 @@ public abstract class Pacman implements Visited{
 		_pos.setLocation(L, C);
 	}
 
-	
+	public void
 	
 }

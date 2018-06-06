@@ -1,4 +1,4 @@
-package ModelComponents;
+package Ghosts;
 
 public abstract class Ghost implements Visitor{
 	

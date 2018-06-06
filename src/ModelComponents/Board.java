@@ -3,6 +3,9 @@ package ModelComponents;
 import java.awt.Point;
 import java.util.Random;
 
+import Pacman.NicePacman;
+import Pacman.Pacman;
+
 public class Board {
 	int[][] _currBoard;
 	private Pacman _pacman;

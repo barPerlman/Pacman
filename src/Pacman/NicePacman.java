@@ -1,8 +1,10 @@
-package ModelComponents;
+package Pacman;
 
-public class AngryPacman extends Pacman{
+import Ghosts.Visitor;
 
-	public AngryPacman(int x, int y) {
+public class NicePacman extends Pacman {
+
+	public NicePacman(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}

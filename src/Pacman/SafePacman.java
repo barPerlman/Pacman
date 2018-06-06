@@ -1,4 +1,6 @@
-package ModelComponents;
+package Pacman;
+
+import Ghosts.Visitor;
 
 public class SafePacman extends Pacman {
 
