@@ -23,6 +23,5 @@ public abstract class Pacman implements Visited{
 		_pos.setLocation(L, C);
 	}
 
-	public void
 	
 }
